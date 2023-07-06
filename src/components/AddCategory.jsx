@@ -15,7 +15,7 @@ export const AddCategory = ({ onNewCategory }) => {
         event.preventDefault();
         if (inputValue.trim().length <= 1) return;
 
-        const res = await getCharacter(input.value.trim());
+        const res = await getCharacter(inputValue.trim());
         console.log("resultado de busqueda:   ", res);
 
 

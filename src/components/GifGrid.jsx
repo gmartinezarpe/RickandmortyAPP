@@ -6,14 +6,20 @@ import { Card, Col, Row, Divider } from "antd";
 export const CharactesGrid = ({ category }) => {
   const [characters, setCharacters] = useState([]);
 
+
+
   const getCharacters = async () => {
     const newCharacters = await getGifs(category);
     setCharacters(newCharacters);
   };
 
+
+
   useEffect(() => {
     getCharacters();
   }, []);
+
+
 
   return (
     <>
@@ -24,7 +30,8 @@ export const CharactesGrid = ({ category }) => {
             <Col span={6} key={char.id}>
               <Card style={{margin: '2px'}}>
                 <img src={char.image} style={{ objectFit: 'cover', height: '200px'}}></img> <div></div>
-                {char.name}
+                {char.name}<div></div>
+                {char.status}
               </Card>
             </Col>
           ))}

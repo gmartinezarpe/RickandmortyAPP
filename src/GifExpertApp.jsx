@@ -3,6 +3,7 @@ import { AddCategory } from "./components/AddCategory";
 import {  Card } from "antd";
 import { Layout, Row, Col, Avatar  } from "antd";
 import { CharactesGrid } from "./components/GifGrid";
+import { CharacterSearch } from "./components/SearchCharacter";
 
 const { Header, Footer, Sider, Content } = Layout;
 

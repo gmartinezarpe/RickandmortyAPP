@@ -24,4 +24,6 @@ export const getCharacter = async (charName) => {
   const { results } = await resp.json();
   return results?.[0] || {};
 };
-   
+
+
+
