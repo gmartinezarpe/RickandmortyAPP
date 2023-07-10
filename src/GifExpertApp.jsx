@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { AddCategory } from "./components/AddCategory";
-import {  Card } from "antd";
-import { Layout, Row, Col, Avatar  } from "antd";
+import { Card, Pagination } from "antd";
+import { Layout, Row, Col, Avatar } from "antd";
 import { CharactesGrid } from "./components/GifGrid";
-import { CharacterSearch } from "./components/SearchCharacter";
+import Page from "./Pagination";
+import { useEffect } from "react";
+import { getPage } from "./helpers/getGifts";
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -14,7 +16,6 @@ const headerStyle = {
   paddingInline: 20,
   lineHeight: "64px",
   backgroundColor: "#000000",
-
 };
 const contentStyle = {
   textAlign: "center",
@@ -32,7 +33,6 @@ const siderStyle = {
 };
 const footerStyle = {
   textAlign: "center",
-  color: "#fff",
   backgroundColor: "#7dbcea",
 };
 
@@ -44,7 +44,16 @@ export const GifExpertApp = () => {
     setCategories([newCategory, ...categories]);
   };
 
+  const [pageNumber, setPageNumber] = useState(3);
+  console.log(pageNumber)
 
+
+  
+  useEffect(() => {
+    getPage();
+  }, [getPage]);
+
+  
 
   return (
     <>
@@ -56,14 +65,21 @@ export const GifExpertApp = () => {
           <AddCategory onNewCategory={onAddCategory} />
         </Sider>
         <Layout>
-          <Header style={headerStyle} > <img src="https://cdn.shopify.com/s/files/1/1920/1289/collections/RickAndMorty_NATIVE-R1_CollectionBanner.jpg?v=1669078529" style={headerStyle}  alt="Imagen del encabezado" /></Header>
+          <Header style={headerStyle}>
+            {" "}
+            <img
+              src="https://cdn.shopify.com/s/files/1/1920/1289/collections/RickAndMorty_NATIVE-R1_CollectionBanner.jpg?v=1669078529"
+              style={headerStyle}
+              alt="Imagen del encabezado"
+            />
+          </Header>
 
-          <Content style={contentStyle} >
+          <Content style={contentStyle}>
             {categories.map((category) => (
               <CharactesGrid />
             ))}
           </Content>
-          <Footer style={footerStyle}>Footer</Footer>
+          <Footer style={footerStyle}><Page setPageNumber={setPageNumber} /></Footer>
         </Layout>
       </Layout>
     </>

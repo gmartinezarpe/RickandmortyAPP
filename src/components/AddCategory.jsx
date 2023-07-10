@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { getCharacter } from "../helpers/getGifts"
 
+
+
 export const AddCategory = ({ onNewCategory }) => {
 
     const [inputValue, setInputValue] = useState('')

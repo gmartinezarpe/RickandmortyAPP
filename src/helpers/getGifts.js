@@ -1,5 +1,5 @@
 export const getGifs = async (category) => {
-  const url = `https://rickandmortyapi.com/api/character?api_key=6M6UgR5IL5NTekVhDB8yXQDzP3yEuvR7&q=${category}`;
+  const url = `https://rickandmortyapi.com/api/character?api_key=6M6UgR5IL5NTekVhDB8yXQDzP3yEuvR7=${category}`;
   const resp = await fetch(url);
   const { results } = await resp.json();
 
@@ -18,12 +18,24 @@ export const getGifs = async (category) => {
   return gifs;
 };
 
+
+
 export const getCharacter = async (charName) => {
   const url = `https://rickandmortyapi.com/api/character/?name=${charName}`;
   const resp = await fetch(url);
   const { results } = await resp.json();
   return results?.[0] || {};
 };
+
+export const getPage = async (pageNumber) => {
+  const url = `https://rickandmortyapi.com/api/character/?page=${pageNumber}`;
+  const resp = await fetch(url);
+  const { results } = await resp.json();
+  console.log(getPage())
+  return results?.[0] || {};
+
+};
+
 
 
 
